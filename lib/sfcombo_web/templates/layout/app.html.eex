@@ -9,6 +9,7 @@
 
     <title>Hello SFCombo!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <%= {:safe, css_link_tag()} %>
   </head>
 
   <body>
@@ -31,5 +32,6 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= {:safe, js_script_tag()} %>
   </body>
 </html>
