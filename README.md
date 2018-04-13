@@ -1,5 +1,17 @@
 # SFCombo
 
+## tutorial dump
+
+- https://medium.com/@kimlindholm/adding-webpack-3-to-phoenix-e6633dbc2bc4
+- https://www.dailydrip.com/blog/how-to-use-phoenix-with-webpack-react-redux.html
+- https://www.npmjs.com/package/extract-text-webpack-plugin
+- https://github.com/rails/webpacker/issues/1295
+- https://webpack.js.org/guides/getting-started/
+- https://webpack.js.org/configuration/
+
+
+## Phoenix
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
