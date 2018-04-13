@@ -1,5 +1,5 @@
-var webpack = require("webpack");
-var path = require("path");
+const webpack = require("webpack");
+const path = require("path");
 
 // We'll be using the ExtractTextPlugin to extract any required CSS into a
 // // single CSS file
@@ -8,8 +8,9 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // fonts
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-var env = process.env.MIX_ENV || "dev";
-var isProduction = env === "prod";
+// Development environment
+const env = process.env.MIX_ENV || "dev";
+const isProduction = env === "prod";
 
 // We'll set up some paths for our generated files and our development server
 const staticDir = path.join(__dirname, ".");
@@ -17,19 +18,27 @@ const destDir = path.join(__dirname, "../priv/static");
 const publicPath = "/";
 
 module.exports = {
+  // entry: {
+  //   app: staticDir + "/js/app.js",
+  //   css: staticDir + "/css/app.scss"
+  // },
   entry: [staticDir + "/js/app.js", staticDir + "/css/app.scss"],
   output: {
     path: destDir,
-    filename: "js/app.js",
+    filename: "js/app.bundle.js",
     publicPath
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
-        query: {
+        // use: [
+        //   {
+        //   },
+        // ],
+        options: {
           presets: ["es2015", "react"]
         }
       },
@@ -39,7 +48,7 @@ module.exports = {
       // them. That isn't available by default in node-sass
       {
         test: /\.s?css$/,
-        use: ExtractTextPlugin.extract({
+        loader: ExtractTextPlugin.extract({
           use: "css-loader!sass-loader!import-glob-loader",
           fallback: "style-loader"
         })
